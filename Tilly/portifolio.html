@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Matilda | Portfolio</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:'Poppins', sans-serif;
+            background:#0b0b0f;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        body::before{
+            content:"";
+            position:fixed;
+            width:500px;
+            height:500px;
+            background:#00f5ff20;
+            border-radius:50%;
+            top:-200px;
+            left:-100px;
+            filter:blur(120px);
+            z-index:-1;
+        }
+
+        body::after{
+            content:"";
+            position:fixed;
+            width:500px;
+            height:500px;
+            background:#8b5cf620;
+            border-radius:50%;
+            bottom:-200px;
+            right:-100px;
+            filter:blur(120px);
+            z-index:-1;
+        }
+
+        /* NAVBAR */
+
+        nav{
+            position:fixed;
+            top:0;
+            width:100%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 10%;
+            background:rgba(0,0,0,0.4);
+            backdrop-filter:blur(10px);
+            z-index:1000;
+            border-bottom:1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo{
+            font-size:28px;
+            font-weight:700;
+            color:#00f5ff;
+        }
+
+        nav ul{
+            display:flex;
+            list-style:none;
+            gap:30px;
+        }
+
+        nav ul li a{
+            text-decoration:none;
+            color:white;
+            transition:0.3s;
+            font-weight:500;
+        }
+
+        nav ul li a:hover{
+            color:#00f5ff;
+        }
+
+        /* HERO */
+
+        .hero{
+            min-height:100vh;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:120px 10%;
+            gap:50px;
+        }
+
+        .hero-text{
+            flex:1;
+        }
+
+        .hero-text h1{
+            font-size:70px;
+            line-height:1.1;
+            margin-bottom:20px;
+        }
+
+        .hero-text h1 span{
+            color:#00f5ff;
+        }
+
+        .hero-text h2{
+            color:#8b5cf6;
+            margin-bottom:20px;
+            font-weight:500;
+        }
+
+        .hero-text p{
+            color:#cfcfcf;
+            line-height:1.8;
+            max-width:600px;
+            margin-bottom:35px;
+        }
+
+        .buttons{
+            display:flex;
+            gap:20px;
+        }
+
+        .btn{
+            padding:14px 32px;
+            border:none;
+            border-radius:30px;
+            background:#00f5ff;
+            color:black;
+            text-decoration:none;
+            font-weight:600;
+            transition:0.4s;
+            box-shadow:0 0 20px #00f5ff80;
+        }
+
+        .btn:hover{
+            transform:translateY(-5px);
+        }
+
+        .btn-outline{
+            padding:14px 32px;
+            border:2px solid #8b5cf6;
+            border-radius:30px;
+            color:white;
+            text-decoration:none;
+            transition:0.4s;
+        }
+
+        .btn-outline:hover{
+            background:#8b5cf6;
+        }
+
+        .hero-image{
+            flex:1;
+            display:flex;
+            justify-content:center;
+        }
+
+        .hero-image img{
+            width:350px;
+            height:350px;
+            object-fit:cover;
+            border-radius:50%;
+            border:5px solid #00f5ff;
+            box-shadow:
+            0 0 30px #00f5ff,
+            0 0 60px #8b5cf6;
+            animation:float 4s ease-in-out infinite;
+        }
+
+        @keyframes float{
+            0%{
+                transform:translateY(0px);
+            }
+            50%{
+                transform:translateY(-20px);
+            }
+            100%{
+                transform:translateY(0px);
+            }
+        }
+
+        /* SECTIONS */
+
+        section{
+            padding:100px 10%;
+        }
+
+        .section-title{
+            font-size:42px;
+            margin-bottom:50px;
+            text-align:center;
+            color:#00f5ff;
+        }
+
+        /* ABOUT */
+
+        .about-container{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+            align-items:center;
+        }
+
+        .about-card{
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.1);
+            padding:40px;
+            border-radius:20px;
+            backdrop-filter:blur(10px);
+        }
+
+        .about-card p{
+            line-height:1.9;
+            color:#d0d0d0;
+        }
+
+        /* SKILLS */
+
+        .skills-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:25px;
+        }
+
+        .skill-card{
+            background:rgba(255,255,255,0.05);
+            padding:35px;
+            border-radius:20px;
+            text-align:center;
+            transition:0.4s;
+            border:1px solid rgba(255,255,255,0.08);
+        }
+
+        .skill-card:hover{
+            transform:translateY(-10px);
+            box-shadow:0 0 25px #00f5ff30;
+        }
+
+        .skill-card i{
+            font-size:45px;
+            color:#00f5ff;
+            margin-bottom:20px;
+        }
+
+        .skill-card h3{
+            margin-bottom:15px;
+        }
+
+        .skill-card p{
+            color:#c9c9c9;
+        }
+
+        /* PROJECTS */
+
+        .projects-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+            gap:30px;
+        }
+
+        .project-card{
+            background:rgba(255,255,255,0.05);
+            border-radius:20px;
+            overflow:hidden;
+            transition:0.4s;
+            border:1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-card:hover{
+            transform:translateY(-10px);
+            box-shadow:0 0 30px #8b5cf650;
+        }
+
+        .project-card img{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+        }
+
+        .project-content{
+            padding:25px;
+        }
+
+        .project-content h3{
+            margin-bottom:15px;
+        }
+
+        .project-content p{
+            color:#cfcfcf;
+            line-height:1.7;
+            margin-bottom:20px;
+        }
+
+        .project-buttons{
+            display:flex;
+            gap:15px;
+        }
+
+        /* TIMELINE */
+
+        .timeline{
+            position:relative;
+            max-width:800px;
+            margin:auto;
+        }
+
+        .timeline::before{
+            content:"";
+            position:absolute;
+            left:50%;
+            width:4px;
+            height:100%;
+            background:#00f5ff;
+            transform:translateX(-50%);
+        }
+
+        .timeline-item{
+            position:relative;
+            width:50%;
+            padding:20px 40px;
+        }
+
+        .timeline-item:nth-child(odd){
+            left:0;
+            text-align:right;
+        }
+
+        .timeline-item:nth-child(even){
+            left:50%;
+        }
+
+        .timeline-content{
+            background:rgba(255,255,255,0.05);
+            padding:25px;
+            border-radius:20px;
+        }
+
+        /* CONTACT */
+
+        .contact-container{
+            max-width:700px;
+            margin:auto;
+            background:rgba(255,255,255,0.05);
+            padding:40px;
+            border-radius:20px;
+        }
+
+        .contact-container form{
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+        }
+
+        .contact-container input,
+        .contact-container textarea{
+            padding:16px;
+            background:#111;
+            border:none;
+            border-radius:10px;
+            color:white;
+            outline:none;
+        }
+
+        .contact-container textarea{
+            resize:none;
+            height:150px;
+        }
+
+        /* FOOTER */
+
+        footer{
+            text-align:center;
+            padding:30px;
+            color:#a0a0a0;
+            border-top:1px solid rgba(255,255,255,0.1);
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:900px){
+
+            .hero{
+                flex-direction:column;
+                text-align:center;
+            }
+
+            .hero-text h1{
+                font-size:50px;
+            }
+
+            .about-container{
+                grid-template-columns:1fr;
+            }
+
+            nav ul{
+                gap:15px;
+            }
+
+            .timeline::before{
+                left:10px;
+            }
+
+            .timeline-item{
+                width:100%;
+                padding-left:40px;
+                padding-right:0;
+                text-align:left !important;
+                left:0 !important;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">MATILDA</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <h1>
+                Hi, I'm <span>Matilda</span>
+            </h1>
+
+            <h2>
+                Data Science Student | Future AI Engineer
+            </h2>
+
+            <p>
+                I explore emerging technologies, 
+                build creative digital solutions, and grow through AI, robotics, and cybersecurity.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn">
+                    View Projects
+                </a>
+
+                <a href="#contact" class="btn-outline">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+
+            <img src="Hilda.jpeg" alt="Profile">
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about-container">
+
+            <div class="about-card">
+
+                <p>
+                   I am a passionate Data Science student with a strong love for computing, innovation, and emerging technologies.
+                    I enjoy exploring new ideas, building creative solutions, and constantly challenging myself to learn beyond the classroom.
+                </p>
+
+                <br>
+
+                <p>
+                 My interests span across Artificial Intelligence, Robotics, Cybersecurity, and software development. 
+                 I am especially fascinated by AI and intelligent systems, and I have completed the Gemini AI Certificate as part of my journey into understanding modern artificial intelligence technologies.  
+                </p>
+
+                <br>
+
+                <p>
+                 Beyond academics, I actively participate in leadership and tech communities. 
+                 I currently serve as the General Secretary of the Robotics Club, where I contribute to organizing activities, collaboration, and innovation initiatives.
+                  I am also part of the Code Buddy Program, where I support learning, mentorship, and peer growth within the tech community.
+                  While my academic background is rooted in Data Science, my growing passion for Cybersecurity has inspired me to explore pathways toward becoming a Cybersecurity Analyst.
+                   I am deeply interested in digital security, problem-solving, and protecting systems in an increasingly technology-driven world.
+
+I believe in creativity, continuous learning, and using technology to create meaningful impact.  
+                </p>
+
+            </div>
+
+            <div class="about-card">
+
+                <p>
+                    Beyond learning, I actively participate in robotics,
+                    mentorship, innovation programs, and technology
+                    communities. I love learning, collaborating,
+                    and pushing myself to grow every day.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <i class="fa-solid fa-code"></i>
+                <h3>Frontend and backend Development</h3>
+                <p>HTML, CSS, python</p>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-solid fa-network-wired"></i>
+                <h3>Networking</h3>
+                <p>Peer-to-peer networking & troubleshooting</p>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-solid fa-microchip"></i>
+                <h3>Hardware</h3>
+                <p>BIOS setup, OS installation & maintenance</p>
+            </div>
+
+            <div class="skill-card">
+    <i class="fa-solid fa-chart-line"></i>
+    <h3>Data Science</h3>
+    <p>
+        Jupyter Notebook, Pandas, data analysis, and visualization workflows.
+    </p>
+</div>
+
+<div class="skill-card">
+    <i class="fa-solid fa-code"></i>
+    <h3>Programming & Problem Solving</h3>
+    <p>
+        Data Structures and Algorithms (DSA), structured programming, and software design.
+    </p>
+</div>
+        </div>
+
+    </section>
+
+   <section id="projects">
+
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-container">
+
+        <!-- Mafia Game -->
+        <div class="project-card">
+
+            <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?q=80&w=1200&auto=format&fit=crop" alt="Mafia Game">
+
+            <div class="project-content">
+
+                <h3>Mafia Multiplayer Game</h3>
+
+                <p>
+                    A multiplayer social deduction game with roles,
+                    voting system, narration, and interactive gameplay.
+                </p>
+
+            </div>
+        </div>
+
+        <!-- QR Attendance -->
+        <div class="project-card">
+
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="QR Attendance">
+
+            <div class="project-content">
+
+                <h3>QR Attendance System</h3>
+
+                <p>
+                    A digital attendance system using QR codes for
+                    robotics sessions and tech events.
+                </p>
+
+            </div>
+        </div>
+
+        <!-- Robotics Blind Stick -->
+        <div class="project-card">
+
+            <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop" alt="Smart Blind Stick">
+
+            <div class="project-content">
+
+                <h3>Smart Blind Assistance Device</h3>
+
+                <p>
+                    A robotics innovation idea focused on assisting
+                    visually impaired individuals using smart sensors.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+    <!-- JOURNEY -->
+
+    <section id="journey">
+
+        <h2 class="section-title">My Journey</h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2025</h3>
+                    <p>Started Data Science journey.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2025</h3>
+                    <p>Joined Robotics & Innovation activities.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2025</h3>
+                    <p>Began building web development projects.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2026</h3>
+                    <p>Became a mentor,secretary for Robotics and code buddy.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h2 class="section-title">Contact Me</h2>
+
+        <div class="contact-container">
+
+            <form>
+
+                <input type="text" placeholder="Your Name">
+
+                <input type="email" placeholder="Your Email">
+
+                <textarea placeholder="Your Message"></textarea>
+
+                <button class="btn">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Designed & Built by Matilda © 2026
+        </p>
+
+    </footer>
+
+</body>
+</html>
